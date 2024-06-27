@@ -9,4 +9,16 @@
 
   <p> Text of section. </p>
 
+  
+  <exercises
+    xml:id="ch-cc_sec-rar_exs-likert-tests"
+    label="ch-cc_sec-rar_exs-likert-tests"
+    >
+    <exercise
+      xml:id="ch-cc_sec-rar_exs-likert-test"
+      label="ch-cc_sec-rar_exs-likert-test"
+      >
+
+    </exercise>
+  </exercises>
 </section>
