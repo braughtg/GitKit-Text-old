@@ -75,49 +75,55 @@ Notes:
 
 ## Naming Conventions
 
-Every XML element that may need to be cross referenced using an `xref` must have an `xml:id` attribute. In addition any elements that are recognized by Runestone must have a `label`. For simplicity and consistency all of the elements identified below will have both an `xml:id` attribute and a `label` attribute with the same value.
+Every XML element that needs to be cross referenced using an `xref` must have an `xml:id` attribute. In addition any elements that are recognized by Runestone must have a `label`. For simplicity and consistency all of the elements identified below will have both an `xml:id` attribute and a `label` attribute with the same value.
 
 For example, an `<exercises>` division following the naming convention defined below might have the `xml:id` and `label` as follows:
 
 ```xml
-  <exercises
-    xml:id="ch-cc_sec-fc_exs-foss-community-principles"
-    label="ch-cc_sec-fc_exs-foss-community-principles"
+  <exercise
+    xml:id="ex-foss-community-principles-q1"
+    label="ex-foss-community-principles-q1"
     >
 ```
 
-- Main Divisions:
+This element can then be linked to using the following:
 
-  - `<chapter>`: `ch-abc-defg-hi`
-    - matches the filename containing the chapter
-  - `<section>`: `ch-adh_sec-jk-lmn`
-    - `ch` with the first letter of each part of the chapter name
-    - followed by an underscore
-    - followed by the filename contaning the section
-  - `<subsection>`: `ch-adh_ssec-opqr-stuv`
-    - similar to above
-    - text following `ssec` matches the title used for the section
-    - note no indication of nesting in section for simplicity
-  - `<subsubsection>`: `ch-adh_sssec-wx-yz`
-    - similar to above
-    - text following `sssec` matches the title used for the section
-    - note no indication of nesting in section for simplicity
+```xml
+<xref ref="ex-foss-community-principles-q1"/>
+```
 
-- Elements in Divisions:
-  - `<figure>`: `ch-abh_sec-jl_fig-mop-qrs`
-    - `ch` as above
-    - followed by an underscore
-    - followed by containing division using its prefix (`sec`, `ws`, etc)
-    - followed by an underscore
-    - followed by `fig` and a unique identifier within the file.
-  - `<exercises>`: `ch-abh_ws_jl_exs-mnop-qrs`
-    - similar to above.
-  - `<exercise>`: `ch-abh_ws-jl_ex-mnop-qrs`
-    - similar to above
-    - note no indication of nesting in `<exercises>` for simplicity.
-  - `<task>`: `ch-abh_ws-jl_task_mnop-qrs`
-    - similar to above
-    - note no indication of nesting in `<exercise>` or `<exercises>`
+__Basics__
+
+1. Use only lowercase letters and numbers.
+2. Use only hyphens to separate words in multiword names: `this-is-an-example`
+3. Prefix each `xml:id` with the type of thing being linked to. Here is an initial list of prefixes:
+    <dl>
+      <dt>fig-</dt>
+      <dd>Figure</dd>
+      <dt>table-</dt>
+      <dd>Table</dd>
+      <dt>topic-</dt>
+      <dd>A topic is a block of text at any level of abstraction. Thus it can be used for a section, a subsection, a paragraph, a chapter, or even a part.</dd>
+      <dt>ex-</dt>
+      <dd>An exercise or set of exercises.</dd>
+    </dl>
+
+__Advice__
+
+1. Use meaningful names that name or describe the thing they name.
+2. Avoid including information that may change (like its structural information: e.g., fig-sec1-subsec2-flow; now you have to rename it if you move it to another section).
+3. Only add `xml:id` and `label` attributes to elements that need them.
+    * If PreTeXt or Runestone require it, then do so.
+    * If you need to link to something from another section, then do so.
+
+__Tip for finding IDs to link to__
+
+Try using a tool like `grep`...
+
+```bash
+$ grep -R 'xml:id' .        # All
+$ grep -R 'xml:id="fig-' .  # Figures
+```
 
 ## Versions
 
