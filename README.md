@@ -50,17 +50,14 @@ Images can be placed in the text by using the chapter name in the `source`:
   ...
   <subsection>
     ...
-    <exercises>
-      <title />
-      ...
-      <exercise>
-      </exercise>
-      ...
-      <exercise>
-      </exercise>
-      ...
-    </exercises>
+    <exercise>
+    </exercise>
     ...
+    <subsubsection>
+      <exercise>
+      </exercise>
+      ...
+    </subsubsection>
   </subsection>
   ...
 </section>
@@ -69,15 +66,15 @@ Images can be placed in the text by using the chapter name in the `source`:
 Notes:
 
 - The `...` can be most any content.
-- The `<exercises>` division should be used even if there is only one `<exercise>` because it forces the questions to be expanded and not shown as _pop-open_ elements.
-- The `<exercise>` divisions in an `<exercises>` division are numbered sequentially. The numbering restarts in a new `<exercises>` division. Thus each sub-[sub-]section should have only one `<exercises>` division.
 - If a section is short and does not require sub-sections then the `<subsection>` division should be omitted.
 
 ## Naming Conventions
 
-Every XML element that needs to be cross referenced using an `xref` must have an `xml:id` attribute. In addition any elements that are recognized by Runestone must have a `label`. For simplicity and consistency all of the elements identified below will have both an `xml:id` attribute and a `label` attribute with the same value.
+Every XML element that needs to be cross referenced using an `xref` must have an `xml:id` attribute.
 
-For example, an `<exercises>` division following the naming convention defined below might have the `xml:id` and `label` as follows:
+In addition any elements that are recognized by Runestone (e.g `<exercise.`) must have a `label`. For simplicity and consistency if an element has both an `xml:id` attribute and a `label` attribute they will have the same value.
+
+For example, an `<exercise>` division following the naming convention defined below might have the `xml:id` and `label` as follows:
 
 ```xml
   <exercise
@@ -111,7 +108,7 @@ __Basics__
 __Advice__
 
 1. Use meaningful names that name or describe the thing they name.
-2. Avoid including information that may change (like its structural information: e.g., fig-sec1-subsec2-flow; now you have to rename it if you move it to another section).
+2. Avoid including information that may change (like its structural information: e.g., fig-sec1-subsec2-flow). This avoids having to rename it if you move it to another section.
 3. Only add `xml:id` and `label` attributes to elements that need them.
     * If PreTeXt or Runestone require it, then do so.
     * If you need to link to something from another section, then do so.
