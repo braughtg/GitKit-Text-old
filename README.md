@@ -47,7 +47,9 @@ Images can be placed in the text by using the chapter name in the `source`:
 ```
 <section>
   <title>...</title>
-  ...
+  <introduction>
+    ...
+  </introduction>
   <subsection>
     ...
     <exercise>
@@ -59,7 +61,9 @@ Images can be placed in the text by using the chapter name in the `source`:
       ...
     </subsubsection>
   </subsection>
-  ...
+  <conclusion>
+    ...
+  </conclusion>
 </section>
 ```
 
@@ -126,18 +130,29 @@ $ grep -R 'xml:id="fig-' .  # Figures
 
 The `<target>`s defined in the `project.ptx` file define the different versions of the book that can be built. How each version appears in defined by the `.ptx` files in the `publication` folder that are referenced by the `<target>`
 
-There are six versions defined at the moment:
+There are 12 versions defined at the moment:
 
-- `student-web` and `student-print` - The book as students will see it.
-- `instructor-web` and `instructor-print` - The book including notes to the instructor (see below).
-- `web` and `print` - same as the instructor versions. Included for the CodeChat preview.
+- `student-web-linux` and `student-print-linux` - The Linux KitClient book as students will see it.
+- `student-web-vscode` and `student-print-vscde` - The VSCode KitClient book as students will see it.
+
+- `instructor-web-linux` and `instructor-print-linux` - The Linux KitClient book including notes to the instructor (see below).
+- `instructor-web-vscode` and `instructor-print-vscode` - The VSCode KitClient book including notes to the instructor (see below).
+
+- `web-linux` and `print-linux` - same as the instructor versions. Included for the CodeChat preview.
+- `web-VSCode` and `print-VSCode` - same as the instructor versions. Included for the CodeChat preview.
 
 The versions can be built using the `PreTeXt` menu or using terminal commands similar to:
 
 ```text
-pretext build instructor-web
-pretext view instructor-web
+pretext build instructor-web-linux
+pretext view instructor-web-linux
 ```
+
+**Note:** In order to build the print versions it is necessary to open the `.devcontainer.json` file and uncomment the line:
+```
+  // "image": "oscarlevin/pretext:small",
+```
+Leaving this uncommented will consume space in the CodeSpace and may exhaust the free allocation.
 
 ### Adding Comments to the Instructor Versions
 
@@ -158,4 +173,17 @@ Content for the instructor is added as:
       </row>
     </tabular>
   </commentary>
+```
+
+### Adding KitClient Specific Content
+
+Content specific to a given kit client should be in a division/attribute with the attribute:
+- `components="linux-kit-client"`
+- `components="vscode-kit-client"`
+
+For example:
+```
+  <p component="vscode-kit-client">
+    This text appears only in the VSCode Kit Client version.
+  </p>
 ```

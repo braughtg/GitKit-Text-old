@@ -33,7 +33,8 @@
     <!-- Set which marked elements are included in this version: -->
     <!-- See
     https://pretextbook.org/doc/guide/html/publication-file-source.html#publication-file-source-version -->
-    <version include="instructor linux-kit-client"/>
+    <!-- <version include="videos labs"/> -->
+    <version include="linux-kit-client" />
   </source>
 
   <numbering>
